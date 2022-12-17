@@ -33,7 +33,6 @@ public class Calculate
 			JOptionPane.showMessageDialog(null, "输入格式有误!");
 			return "error";
 		}
-		
 	}
 
 }
