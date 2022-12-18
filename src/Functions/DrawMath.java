@@ -48,7 +48,7 @@ public class DrawMath {
         express = "y=" + express;
         JFreeChart chart = ChartFactory.createXYLineChart(express, "x", "y",
                 dataset, PlotOrientation.VERTICAL, false, false, false);
-//        chart.getTitle().setFont(new Font("宋体",Font.PLAIN,12)); //标题
+        // chart.getTitle().setFont(new Font("宋体",Font.PLAIN,12)); //标题
         XYPlot xyplot = (XYPlot) chart.getPlot();
         XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) xyplot
                 .getRenderer();

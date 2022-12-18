@@ -25,6 +25,7 @@ public class MainController extends View {
     public static void main(String[] args) {
         new MainController();
     }
+
     //构造函数，注册所有点击事件
     public MainController() {
         super();
@@ -98,6 +99,10 @@ public class MainController extends View {
     }
 
     //“绘图”模块
+
+    /**
+     * 实现绘图
+     */
     class DrawController implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             drawMath = new DrawMath();
@@ -129,6 +134,11 @@ public class MainController extends View {
     }
 
     //“单位换算”模块
+
+    /**
+     * 进制转换调用函数
+     * 其他换算单独编写代码
+     */
     class TransController implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             trans = new Trans();
@@ -153,6 +163,7 @@ public class MainController extends View {
             String dollar = dollarField.getText();
             String pand = pandField.getText();
             String euro = euroField.getText();
+            //
             if (o == transButton21) {
                 if (ten.length() != 0 && two.length() == 0
                         && sixteen.length() == 0) {
@@ -210,9 +221,8 @@ public class MainController extends View {
                     mField.setText("" + Double.valueOf(li) * 500);
                     cmField.setText("" + Double.valueOf(li) * 50000);
                 } else {
-                    JOptionPane.showMessageDialog(null, "输入有误！");
+                    JOptionPane.showMessageDialog(null, "吴世博提醒你，输入格式有误!");
                 }
-
             } else if (o == transButton12) {
                 mmField.setText("");
                 kmField.setText("");
@@ -242,7 +252,7 @@ public class MainController extends View {
                     jinField.setText("");
                     bField.setText("");
                 } else {
-                    JOptionPane.showMessageDialog(null, "输入有误！");
+                    JOptionPane.showMessageDialog(null, "吴世博提醒你，输入格式有误!");
                 }
 
             } else if (o == transButton32) {
@@ -273,7 +283,7 @@ public class MainController extends View {
                     dollarField.setText("" + Double.valueOf(euro) * 0.8725);
                     pandField.setText("" + Double.valueOf(euro) * 1.1146);
                 } else {
-                    JOptionPane.showMessageDialog(null, "输入有误！");
+                    JOptionPane.showMessageDialog(null, "吴世博提醒你，输入格式有误!");
                 }
 
             } else if (o == transButton42) {
