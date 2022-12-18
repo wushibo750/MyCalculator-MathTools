@@ -1,7 +1,5 @@
 package GUI;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridLayout;
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
@@ -10,16 +8,16 @@ public class View extends JFrame {
     protected JTabbedPane jtab, transpane, formulapane, helppane;
 
     protected JPanel calulatepane, drawpane,aboutMe;
-    // calulatepane
+    // calulatepane 计算模块
     protected JButton[] key1;
     protected JTextField calField, resultField;
     protected JTextArea calArea;
-    // drawpane
+    // drawpane 绘图模块
     protected JButton[] key2;
     protected JTextField drawField;
     protected JPanel drawxyPanel;
 
-    // transpane
+    // transpane 单位换算模块
     protected JButton transButton11, transButton12, transButton21, transButton22,
             transButton31, transButton32, transButton41, transButton42;
     protected JTextField tenField, twoField, sixteenField;
@@ -27,11 +25,12 @@ public class View extends JFrame {
     protected JTextField gField, kgField, jinField, bField;
     protected JTextField rmbField, pandField, dollarField, euroField;
 
+    //构造函数，创建标签栏和相应模块
     public View() {
         layoutcompents();
         launchframe();
     }
-
+    //
     public void launchframe() {
         setTitle("MathTools——吴世博 Java课程 结课大作业");
         setIconImage(new ImageIcon("image/math.png").getImage());
@@ -42,24 +41,28 @@ public class View extends JFrame {
         setVisible(true);
         calField.requestFocusInWindow();
     }
-
+    //“计算”模块
     public void calulatepane() {
         // calulatepane
         calulatepane = new JPanel();
         key1 = new JButton[32];
-        String[] keyname = {"1", "2", "3", "CE", "4", "5", "6", "C", "7", "8",
-                "9", "/", "e", "0", "π", "*", "log", ".", "=", "+", "^2", "^3",
-                "^", "-", "^(1/2)", "^(1/3)", "^(1/", "(", "sin(", "cos(",
-                "tan(", ")"};
+        String[] keyname = { "1", "2", "3", "CE", "4", "5", "6", "AC", "7", "8",
+                "9", "/", "e", "0", "π", "*", "log", ".", ")", "+", "^2", "^3",
+                "(", "-", "^(1/2)", "^(1/3)", "^(1/", "^", "sin", "cos",
+                "tan", "=" };   //按键按钮
+//        String[] keyname1 = { "1", "2", "3", "CE", "4", "5", "6", "C", "7", "8",
+//                "9", "/", "e", "0", "π", "*", "log", ".", "=", "+", "^2", "^3",
+//                "^", "-", "^(1/2)", "^(1/3)", "^(1/", "(", "sin(", "cos(",
+//                "tan(", ")" };
         JPanel keyPane1 = new JPanel();
         for (int i = 0; i < 32; i++) {
             key1[i] = new JButton(keyname[i]);
             keyPane1.add(key1[i]);
             if ("1234567890".indexOf(keyname[i]) >= 0) {
-                key1[i].setForeground(Color.BLUE);
+                key1[i].setForeground(Color.BLUE);  //设置背景颜色为蓝色
             }
-            if ("'CE''=''c'".indexOf(keyname[i]) >= 0) {
-                key1[i].setForeground(Color.RED);
+            if ("'CE''=''AC''/''*''+''-'".indexOf(keyname[i]) >= 0) {
+                key1[i].setForeground(Color.RED);  //设置背景颜色为红色
             }
         }
         keyPane1.setLayout(new GridLayout(8, 4, 10, 5));
@@ -68,31 +71,38 @@ public class View extends JFrame {
 
         calArea = new JTextArea();
         calArea.setEditable(false);
+        calArea.setFont(new Font("宋体",Font.BOLD,20)); //设置历史记录中的字体大小与样式
+
         JScrollPane caljsp = new JScrollPane(calArea);
-        caljsp.setBorder(new TitledBorder("历史纪录"));
+        caljsp.setBorder(new TitledBorder("历史记录:  "));
 
         calField = new JTextField();
+        calField.setFont(new Font("宋体",Font.BOLD,28)); //设置字体大小和样式
         calField.setHorizontalAlignment(JTextField.RIGHT);
         resultField = new JTextField();
         resultField.setEditable(false);
         resultField.setBackground(Color.white);
         resultField.setHorizontalAlignment(JTextField.RIGHT);
         resultField.setText("0");
+        resultField.setFont(new Font("宋体",Font.BOLD,28));
         JPanel resultPanel = new JPanel();
         JPanel northPanel = new JPanel();
         JLabel resultLabel = new JLabel("结果:  ");
+        resultLabel.setFont(new Font("宋体",Font.BOLD,20));
         resultPanel.setLayout(new BorderLayout());
         resultPanel.add(resultLabel, BorderLayout.WEST);
+        resultPanel.setFont(new Font("宋体",Font.BOLD,20));
         resultPanel.add(resultField, BorderLayout.CENTER);
         northPanel.add(calField);
         northPanel.add(resultPanel);
         northPanel.setLayout(new GridLayout(2, 1));
+        northPanel.setFont(new Font("宋体",Font.BOLD,20));
         calField.setHorizontalAlignment(JTextField.RIGHT);
-
         calulatepane.add(northPanel, BorderLayout.NORTH);
         calulatepane.add(caljsp, BorderLayout.CENTER);
     }
 
+    //“绘图”模块
     public void drawpane() {
         // drawpane
         drawpane = new JPanel();
@@ -125,6 +135,7 @@ public class View extends JFrame {
         drawpane.add(drawxyPanel, BorderLayout.CENTER);
     }
 
+    //“单位换算”模块
     public void transpane() {
         // transpane
         transpane = new JTabbedPane(JTabbedPane.LEFT);
@@ -252,6 +263,7 @@ public class View extends JFrame {
         transpane4.add(transpane42);
     }
 
+    //“关于我”模块
     public void aboutMe() {
         aboutMe = new JPanel();
         aboutMe.setBorder(BorderFactory.createTitledBorder("Y02014191 吴世博 互联网学院"));
@@ -260,19 +272,19 @@ public class View extends JFrame {
         aboutMe.add(button,BorderLayout.CENTER);
         aboutMe.setBackground(Color.YELLOW);
     }
+
+    //标签栏设置
     public void layoutcompents() {
         calulatepane();
         drawpane();
         transpane();
         aboutMe();
-        // jtab
         jtab = new JTabbedPane();
         jtab.addTab("计算", new ImageIcon("image/计算.png"), calulatepane);
         jtab.addTab("作图", new ImageIcon("image/绘图.png"), drawpane);
         jtab.addTab("换算", new ImageIcon("image/换算.png"), transpane);
-//        jtab.addTab("关于我", new ImageIcon("image/换算.png"), aboutMe);
+        //jtab.addTab("关于我", new ImageIcon("image/换算.png"), aboutMe);
         jtab.addTab("关于我", aboutMe);
-        // jfrme
         this.add(jtab);
     }
 }

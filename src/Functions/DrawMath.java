@@ -1,6 +1,6 @@
 package Functions;
 
-import java.awt.Color;
+import java.awt.*;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -25,7 +25,6 @@ public class DrawMath {
         double result = cal.evaluate();
         return result;
     }
-
     public ChartPanel eval(String express) {
         XYSeries xSeries = new XYSeries("xSeries");
         for (double x = -10; x < 10; x = x + 0.1) {
@@ -47,8 +46,9 @@ public class DrawMath {
         dataset.addSeries(ySeries);
         dataset.addSeries(series);
         express = "y=" + express;
-        JFreeChart chart = ChartFactory.createXYLineChart(express, "y", "x",
+        JFreeChart chart = ChartFactory.createXYLineChart(express, "x", "y",
                 dataset, PlotOrientation.VERTICAL, false, false, false);
+//        chart.getTitle().setFont(new Font("宋体",Font.PLAIN,12)); //标题
         XYPlot xyplot = (XYPlot) chart.getPlot();
         XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) xyplot
                 .getRenderer();
@@ -56,7 +56,6 @@ public class DrawMath {
         renderer.setSeriesPaint(1, Color.BLACK);
         ValueAxis valueaxis = xyplot.getRangeAxis();
         valueaxis.setPositiveArrowVisible(true);
-
         return new ChartPanel(chart);
     }
 }
