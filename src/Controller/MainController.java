@@ -14,22 +14,24 @@ import GUI.View;
 public class MainController extends View {
     static String calIn = " ";
     static String drawIn = " ";
-    Calculate calcuate;
-    DrawMath drawMath;
-    Trans trans;
-    CalController calController;
-    TransController transController;
-    DrawController drawController;
+    Calculate calcuate;  //计算
+    DrawMath drawMath; //绘图
+    Trans trans; //单位转换
+    CalController calController;  //计算控制器
+    TransController transController; //单位转换控制器
+    DrawController drawController; //绘图控制器
 
+    //主函数
     public static void main(String[] args) {
         new MainController();
     }
-
+    //构造函数，注册所有点击事件
     public MainController() {
         super();
         registerlistener();
     }
 
+    //注册所有的点击事件
     public void registerlistener() {
         calController = new CalController();
         // calulatepanel
@@ -53,28 +55,32 @@ public class MainController extends View {
         transButton42.addActionListener(transController);
     }
 
+    //“计算"模块
+
+    /**
+     * 实现科学计算
+     */
     class CalController implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             calcuate = new Calculate();
             String get = e.getActionCommand();
-
             if ("0123456789.+-*/^()eπ'sin(''cos(''tan(''log''^2''^3''^(1/2)''^(1/3)'"
                     .indexOf(get) >= 0) {
                 calIn = calField.getText() + get;
                 calField.setText(calIn);
                 calField.requestFocusInWindow();
-
             } else if ("=".indexOf(get) >= 0
                     && calField.getText().trim().length() != 0
                     && !calIn.contains("=")) {
                 calIn = calField.getText();
+                //进行科学计算
                 resultField.setText(calcuate.getResult(calField.getText()));
+                //输出计算结果
                 calField.setText(calIn);
                 if (!resultField.getText().contains("error")) {
                     calArea.append(calIn + "=" + resultField.getText() + "\n");
                 }
                 calField.requestFocusInWindow();
-
             } else if ("CE".compareTo(get) == 0) {
                 int L = calIn.length();
                 if (L != 0) {
@@ -82,7 +88,7 @@ public class MainController extends View {
                 }
                 calField.setText(calIn);
                 calField.requestFocusInWindow();
-            } else if ("C".compareTo(get) == 0) {
+            } else if ("AC".compareTo(get) == 0) {
                 calIn = "";
                 calField.setText(calIn);
                 resultField.setText("0");
@@ -91,6 +97,7 @@ public class MainController extends View {
         }
     }
 
+    //“绘图”模块
     class DrawController implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             drawMath = new DrawMath();
@@ -121,6 +128,7 @@ public class MainController extends View {
         }
     }
 
+    //“单位换算”模块
     class TransController implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             trans = new Trans();

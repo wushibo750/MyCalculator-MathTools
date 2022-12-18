@@ -19,7 +19,7 @@ public class View extends JFrame {
 
     // transpane 单位换算模块
     protected JButton transButton11, transButton12, transButton21, transButton22,
-            transButton31, transButton32, transButton41, transButton42;
+            transButton31, transButton32, transButton41, transButton42;   //8个“转换”和“清空”按钮
     protected JTextField tenField, twoField, sixteenField;
     protected JTextField mField, cmField, mmField, kmField, liField;
     protected JTextField gField, kgField, jinField, bField;
@@ -48,8 +48,8 @@ public class View extends JFrame {
         key1 = new JButton[32];
         String[] keyname = { "1", "2", "3", "CE", "4", "5", "6", "AC", "7", "8",
                 "9", "/", "e", "0", "π", "*", "log", ".", ")", "+", "^2", "^3",
-                "(", "-", "^(1/2)", "^(1/3)", "^(1/", "^", "sin", "cos",
-                "tan", "=" };   //按键按钮
+                "(", "-", "^(1/2)", "^(1/3)", "^(1/", "^", "sin(", "cos(",
+                "tan(", "=" };   //按键按钮
 //        String[] keyname1 = { "1", "2", "3", "CE", "4", "5", "6", "C", "7", "8",
 //                "9", "/", "e", "0", "π", "*", "log", ".", "=", "+", "^2", "^3",
 //                "^", "-", "^(1/2)", "^(1/3)", "^(1/", "(", "sin(", "cos(",
