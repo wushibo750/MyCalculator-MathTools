@@ -1,7 +1,6 @@
 package Functions;
 
 import java.awt.*;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -11,10 +10,8 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
-
 
 public class DrawMath {
     public double parse(String express, double x) {
@@ -30,22 +27,27 @@ public class DrawMath {
         for (double x = -10; x < 10; x = x + 0.1) {
             xSeries.add(x, 0);
         }
+        System.out.println("xSeries==>"+xSeries);
         XYSeries ySeries = new XYSeries("ySeries");
         for (double y = -10; y < 10; y = y + 0.1) {
             ySeries.add(0, y);
         }
+        System.out.println("ySeries==>"+ySeries);
         XYSeries series = new XYSeries("xySeries");
         for (double x = -10; x < 10; x = x + 0.1) {
+            //调用函数parse
             double y = parse(express, x);
             if (y < 10 && y > -10) {
                 series.add(x, y);
             }
         }
+        System.out.println("series==>"+series);
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(xSeries);
         dataset.addSeries(ySeries);
         dataset.addSeries(series);
         express = "y=" + express;
+        //绘制图表
         JFreeChart chart = ChartFactory.createXYLineChart(express, "x", "y",
                 dataset, PlotOrientation.VERTICAL, false, false, false);
         // chart.getTitle().setFont(new Font("宋体",Font.PLAIN,12)); //标题
