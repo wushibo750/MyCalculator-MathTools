@@ -266,11 +266,17 @@ public class View extends JFrame {
     //“关于我”模块
     public void aboutMe() {
         aboutMe = new JPanel();
-        aboutMe.setBorder(BorderFactory.createTitledBorder("Y02014191 吴世博 互联网学院"));
-        JButton button = new JButton("Java课程大作业");
+        aboutMe.setBorder(BorderFactory.createTitledBorder("详细信息："));
+        aboutMe.setFont(new Font("宋体",Font.BOLD,28));
+        JButton button1 = new JButton("安徽大学——Java技术及应用课程");
+//        JButton button2 = new JButton("MathTools——科学计算器");
+        JButton button2 = new JButton("<html>  MathTools——科学计算器<br>Y02014191 吴世博 互联网学院<br>20级 智能科学与技术专业</html>");
+        JButton button3 = new JButton("课程设计大作业");
         aboutMe.setLayout(new BorderLayout());
-        aboutMe.add(button,BorderLayout.CENTER);
-        aboutMe.setBackground(Color.YELLOW);
+        aboutMe.add(button1,BorderLayout.NORTH);
+        aboutMe.add(button2,BorderLayout.CENTER);
+        aboutMe.add(button3,BorderLayout.SOUTH);
+//        aboutMe.setBackground(Color.BLUE);
     }
 
     //标签栏设置
