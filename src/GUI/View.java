@@ -2,8 +2,6 @@ package GUI;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-
-
 public class View extends JFrame {
     protected JTabbedPane jtab, transpane, formulapane, helppane;
 
@@ -61,7 +59,7 @@ public class View extends JFrame {
             if ("1234567890".indexOf(keyname[i]) >= 0) {
                 key1[i].setForeground(Color.BLUE);  //设置背景颜色为蓝色
             }
-            if ("'CE''=''AC''/''*''+''-'".indexOf(keyname[i]) >= 0) {
+            if ("'^''CE''=''AC''/''*''+''-'".indexOf(keyname[i]) >= 0) {
                 key1[i].setForeground(Color.RED);  //设置背景颜色为红色
             }
         }
@@ -118,7 +116,7 @@ public class View extends JFrame {
             if ("1234567890".indexOf(keyname[i]) >= 0) {
                 key2[i].setForeground(Color.BLUE);
             }
-            if ("'重绘''绘制'x,".indexOf(keyname[i]) >= 0) {
+            if ("'/''*''+''-''重绘''绘制',".indexOf(keyname[i]) >= 0) {
                 key2[i].setForeground(Color.RED);
             }
         }
@@ -126,6 +124,9 @@ public class View extends JFrame {
         drawField.setHorizontalAlignment(JTextField.RIGHT);
         drawField.setEditable(false);
         drawField.setBackground(Color.white);
+
+        drawField.setFont(new Font("宋体",Font.BOLD,23)); //更改输入公式的大小
+
         drawxyPanel = new JPanel();
         drawxyPanel.setLayout(new BorderLayout());
         keyPane2.setLayout(new GridLayout(7, 4, 5, 0));
@@ -269,14 +270,14 @@ public class View extends JFrame {
         aboutMe.setBorder(BorderFactory.createTitledBorder("详细信息："));
         aboutMe.setFont(new Font("宋体",Font.BOLD,28));
         JButton button1 = new JButton("安徽大学——Java技术及应用课程");
-//        JButton button2 = new JButton("MathTools——科学计算器");
+        //JButton button2 = new JButton("MathTools——科学计算器");
         JButton button2 = new JButton("<html>  MathTools——科学计算器<br>Y02014191 吴世博 互联网学院<br>20级 智能科学与技术专业</html>");
         JButton button3 = new JButton("课程设计大作业");
         aboutMe.setLayout(new BorderLayout());
         aboutMe.add(button1,BorderLayout.NORTH);
         aboutMe.add(button2,BorderLayout.CENTER);
         aboutMe.add(button3,BorderLayout.SOUTH);
-//        aboutMe.setBackground(Color.BLUE);
+        //aboutMe.setBackground(Color.BLUE);
     }
 
     //标签栏设置
