@@ -30,7 +30,7 @@ public class View extends JFrame {
     }
     //
     public void launchframe() {
-        setTitle("MathTools——吴世博 Java课程 结课大作业");
+        setTitle("MathCalculatorTools——吴世博 Java课程 结课大作业");
         setIconImage(new ImageIcon("image/math.png").getImage());
         setSize(560, 615);
         setLocationRelativeTo(null);
@@ -291,7 +291,7 @@ public class View extends JFrame {
         jtab.addTab("作图", new ImageIcon("image/绘图.png"), drawpane);
         jtab.addTab("换算", new ImageIcon("image/换算.png"), transpane);
         //jtab.addTab("关于我", new ImageIcon("image/换算.png"), aboutMe);
-        jtab.addTab("关于我", aboutMe);
+        jtab.addTab("关于我",new ImageIcon("image/我的.png"), aboutMe);
         this.add(jtab);
     }
 }
